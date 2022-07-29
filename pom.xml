@@ -45,5 +45,10 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	<repositories>
+		<repository>
+			<id>treelogy-system-group</id>
+			<url>http://nexus.treelogy.eco.br/repository/treelogy-system-group/</url>
+		</repository>
+	</repositories>
 </project>
