@@ -4,7 +4,8 @@ import java.util.Locale;
 
 public class ConvertUtils {
 
-    private static String asciiToHex(String asciiStr) {
+
+    public static String asciiToHex(String asciiStr) {
         char[] chars = asciiStr.toCharArray();
         StringBuilder hex = new StringBuilder();
         for (char ch : chars) {
