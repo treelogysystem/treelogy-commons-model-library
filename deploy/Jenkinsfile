@@ -1,4 +1,4 @@
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])
+properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])])
 
 pipeline{
     agent any
@@ -7,9 +7,9 @@ pipeline{
             steps{
                 dir('code-source'){
                       git branch: 'development', credentialsId: 'treelogy-sandbox-github', url: 'https://github.com/treelogysystem/treelogy-template-lib/'
-                 }
+                }
             }
-          }
+        }
           stage('Tests Units') {
               steps {
                   script {
@@ -23,6 +23,6 @@ pipeline{
                         sh 'mvn deploy'
                     }
                 }
-            }
+          }
     }
 }
