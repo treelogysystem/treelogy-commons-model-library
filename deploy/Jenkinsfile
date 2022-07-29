@@ -1,4 +1,4 @@
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])z
+properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])
 
 pipeline{
     agent any
