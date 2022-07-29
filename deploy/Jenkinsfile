@@ -26,7 +26,7 @@ pipeline{
           }
           stage('Deploy Nexus Archetype') {
                 steps {
-                    nexusArtifactUploader artifacts: [[artifactId: 'template-lib', classifier: '', file: 'target/template-lib-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'treelogy-sandbox-nexus-admin', groupId: 'treelogy.br', nexusUrl: 'nexus.treelogy.eco.br', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshot', version: '0.0.1-SNAPSHOT'
+                    nexusArtifactUploader artifacts: [[artifactId: 'template-lib', classifier: '', file: 'target/template-lib-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'treelogy-sandbox-nexus', groupId: 'treelogy.br', nexusUrl: 'nexus.treelogy.eco.br', nexusVersion: 'nexus3', protocol: 'http', repository: 'treelogy-system-snapshot', version: '0.0.1-SNAPSHOT'
                 }
           }
     }
