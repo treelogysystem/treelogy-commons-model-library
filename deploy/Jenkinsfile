@@ -10,20 +10,20 @@ pipeline{
                 }
             }
         }
-          stage('Tests Units') {
+          stage('Maven Tests') {
               steps {
                   script {
                       sh 'mvn test'
                   }
               }
           }
-          stage('Tests Units') {
+          stage('Maven Install') {
                 steps {
                     script {
                         sh 'mvn install'
                     }
                 }
-            }
+          }
           stage('Deploy Nexus Archetype') {
                 steps {
                     nexusArtifactUploader artifacts: [[artifactId: 'treelogy-template-lib', classifier: '', file: 'template-lib-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'treelogy-sandbox-nexus', groupId: 'treelogy.br', nexusUrl: 'nexus.treelogy.eco.br/repository/maven-group/', nexusVersion: 'nexus2', protocol: 'http', repository: 'maven-group', version: '0.0.1'
