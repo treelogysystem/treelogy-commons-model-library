@@ -1,0 +1,33 @@
+properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])])
+
+pipeline{
+    agent any
+    stages{
+        stage ('Source Code'){
+            steps{
+                dir('code-source'){
+                      git branch: 'development', credentialsId: 'treelogy-sandbox-github', url: 'https://github.com/treelogysystem/treelogy-template-lib/'
+                }
+            }
+        }
+          stage('Maven Tests') {
+              steps {
+                  script {
+                      sh 'mvn test'
+                  }
+              }
+          }
+          stage('Maven Install') {
+                steps {
+                    script {
+                        sh 'mvn install'
+                    }
+                }
+          }
+          stage('Deploy Nexus Archetype') {
+                steps {
+                    nexusArtifactUploader artifacts: [[artifactId: 'template-lib', classifier: '', file: 'target/template-lib-0.0.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'treelogy-sandbox-nexus', groupId: 'treelogy.br', nexusUrl: 'nexus.treelogy.eco.br', nexusVersion: 'nexus3', protocol: 'http', repository: 'treelogy-system-snapshots', version: '0.0.1-SNAPSHOT'
+                }
+          }
+    }
+}
