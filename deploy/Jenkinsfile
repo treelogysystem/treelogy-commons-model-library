@@ -1,15 +1,7 @@
-properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])])
 
 pipeline{
     agent any
     stages{
-        stage ('Source Code'){
-            steps{
-                dir('code-source'){
-                      git branch: 'development', credentialsId: 'treelogy-sandbox-github', url: 'https://github.com/treelogysystem/treelogy-template-lib/'
-                }
-            }
-        }
           stage('Maven Tests') {
               steps {
                   script {
