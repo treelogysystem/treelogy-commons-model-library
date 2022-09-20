@@ -1,4 +1,4 @@
-package treelogy.br.templatelib.utils;
+package treelogy.br.modellibrary.utils;
 
 import java.util.Locale;
 
